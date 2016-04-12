@@ -30,4 +30,34 @@ function sum($a,$b,$func)
   }
   return $func($a) + sum($a + 1, $b, $func);
 }
-echo sum(2,4, $cube);
+echo sum(2,4, $cube) . "\n";
+
+function product($num1,$num2,$func)
+{
+  if($num1 == $num2)
+  {
+    return $num2;
+  }
+  return $func(product($num1,$num2 - 1, $func),$num2);
+}
+echo product(3,6, function($num1,$num2){return $num1 - $num2;}) . "\n";
+
+function sum1($start, $finish, $func)
+{
+    // BEGIN (write your solution here)
+ $iterr = function ($cur, $acc) use (&$finish, &$func, &$iterr)
+   {
+       if($cur > $finish)
+       {
+           return $acc;
+
+       }
+       return $iterr($cur + 1, $acc + $func($cur));
+   };
+   return $iterr($start, 0);
+}
+
+
+echo sum1(1,5, function($x){ return $x;});
+
+    // END
