@@ -35,3 +35,15 @@ function factor($multi){
 echo "\n";
 $multipler = factor(2);
 echo $multipler(8);
+echo "\n";
+//Практическое задание №2
+//Реализовать функцию double которая принимает как аргумент функцию с одним аргументом  и возвращает функцию которая принимает исходную функцию дважды
+function double($func1){
+return function ($arg) use (&$func1){
+  return $func1($func1($arg));
+};
+}
+$inc = function ($arg){ return $arg + 1;};
+$inc2 = double($inc);
+$inc4 = double($inc2);
+echo $inc4(2);
