@@ -3,14 +3,13 @@
 //Лямда функция которая вычисляет сумму двух чисел
 function sumGenerator($func)
 {
-  return function($a, $b) use ($func) //$func замыкание функции
+  return function($a, $b) use ($func) //$func замыкание функции. Функция возвращает анонимную функцию в которую оборачивает нашу базовую функцию sum
   {
     return sum($a,$b,$func);
   };
 }
 
-
-function sum($a, $b, $func)
+function sum($a, $b, $func)//Лямда функция которая вычисляет сумму двух чисел, (Базовая функция. на ее основе строятся другие функции)
 {
 if($a > $b)
 {
@@ -18,6 +17,7 @@ if($a > $b)
 }
 return $func($a) + sum($a + 1, $b, $func);
 }
+
 $sumInteger = sumGenerator(function($x){ return $x * $x; });
 $sumCubes = sumGenerator(function($x) { return $x * $x * $x;});
 echo $sumInteger(1,5);
