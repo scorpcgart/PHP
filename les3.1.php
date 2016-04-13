@@ -24,3 +24,28 @@ $evenSquareSum = function ($array){
   };
 
 echo $evenSquareSum($array);
+
+//Функция zip
+$result = array_map(null, range(1,5),range(11,16));//если в array_map указать вместо функции null и передать два массива то возвращает массив где 0 =(1,11) 1=(2,12) 3=(3,13)
+print_r($result);
+
+//Практическое задание.
+//Реализовать функцию которая принимает на вход результаты попыток и возвращает массив со списком имен футбольных клубов.
+function bestAttempt($first, $second)
+{
+    $result = zip($first, $second, function ($result1, $result2) {
+        if ($result1['scored'] > $result2['scored']) {
+            return $result1['name'];
+        } else if ($result1['scored'] < $result2['scored']) {
+            return $result2['name'];
+        } else if ($result1['scored'] == $result2['scored']) {
+            return null;
+        }
+    });
+
+    $result2 = array_filter($result, function ($var) {
+        return !is_null($var);
+    });
+
+    return array_values($result2);
+}
