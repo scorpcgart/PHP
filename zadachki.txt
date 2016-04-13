@@ -1,0 +1,80 @@
+//задача длина последнего слова
+Реализуйте функцию lengthOfLastWord, которая возвращает длину последнего слова переданной на вход строки. Словом считается любая последовательность не содержащая пробелов.
+
+Примеры:
+
+0 == lengthOfLastWord('');
+5 == lengthOfLastWord('man in BlacK');
+6 == lengthOfLastWord('hello, world!  ');
+
+
+//задача, Вес хеминга
+Вес Хэмминга это количество единиц в двоичном представлении числа.
+
+Solution.php
+Реализуйте функцию hammingWeight, которая считает вес Хамминга.
+
+Пример:
+
+0 == hammingWeight(0)
+1 == hammingWeight(4)
+4 == hammingWeight(101)
+
+//test
+public function testHammingWeight($expected, $number)
+    {
+        $this->assertEquals($expected, hammingWeight($number));
+    }
+
+    public function additionProvider()
+    {
+        return [
+            [0, 0],
+            [1, 1],
+            [2, 5],
+            [2, 10],
+            [4, 101],
+            [6, 12345]
+        ];
+    }
+}
+
+//задача рекурсивное сложение чисел
+Дано не отрицательное целое число num. Итеративно сложите все входящие в него цифры до тех пор пока не останется одна цифра.
+
+Для числа 38 процесс будет выглядеть так:
+
+3 + 8 = 11
+1 + 1 = 2
+Результат: 2
+
+Solution.php
+Реализуйте функцию addDigits
+
+Пример:
+
+0 == addDigits(0)
+1 == addDigits(1)
+9 == addDigits(9)
+1 == addDigits(10)
+2 == addDigits(38)
+
+//test
+public function testAddDigits($expected, $number)
+ {
+     $this->assertEquals($expected, addDigits($number));
+ }
+
+ public function additionProvider()
+ {
+     return [
+         [0, 0],
+         [1, 1],
+         [9, 9],
+         [1, 10],
+         [1, 19],
+         [2, 38],
+         [8, 1259]
+     ];
+ }
+}
